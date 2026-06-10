@@ -84,8 +84,15 @@ public class Main {
         System.out.println("Esercizio 3: ");
         boysOrder.forEach(System.out::println);
 
-        List<Product> 
+        List<List<Product>> tier2Order = orders.stream()
+                .filter(order -> order.getCustomer().getTier() == 2)
+                .filter(order -> order.getOrderDate().isAfter(LocalDate.of(2021,2,1)) &&
+                        order.getOrderDate().isBefore(LocalDate.of(2021, 4, 1)))
+                .map(order -> order.getProducts())
+                .toList();
 
+        System.out.println("Esercizio 4: ");
+        tier2Order.forEach(productList -> productList.forEach(System.out::println));
 
 
 
