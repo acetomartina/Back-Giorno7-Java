@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         Product p1 = new Product(1L, "Il signore degli Anelli", "Books", 80.0);
         Product p2 = new Product(2L, "Le cronache del Ghiaccio e del Fuoco", "Books", 130.0);
         Product p3 = new Product(3L, "Camion dei Pompieri", "Baby", 70.0);
         Product p4 = new Product(4L, "Trenino Elettrico", "Baby", 110.0);
         Product p5 = new Product(5L, "Moto da Cross", "Boys", 170.0);
-        Product p6 = new Product(6L,"Moto GP Racing", "Boys", 250.0);
+        Product p6 = new Product(6L, "Moto GP Racing", "Boys", 250.0);
         Product p7 = new Product(7L, "Le Notti Bianche", "Books", 150.0);
 
 
@@ -25,14 +25,14 @@ public class Main {
         Customer c2 = new Customer(2L, "Luigi Mora", 2);
         Customer c3 = new Customer(3L, "Anna Corvi", 2);
 
-        List<Customer> customers = new ArrayList<>(List.of(c1,c2,c3));
+        List<Customer> customers = new ArrayList<>(List.of(c1, c2, c3));
 
 
         Order o1 = new Order(1L,
                 "Consegnato",
-                LocalDate.of(2021,2,15),
-                LocalDate.of(2021,2,21),
-                new ArrayList<>(List.of(p2,p3)),
+                LocalDate.of(2021, 2, 15),
+                LocalDate.of(2021, 2, 21),
+                new ArrayList<>(List.of(p2, p3)),
                 c2
         );
 
@@ -68,11 +68,23 @@ public class Main {
                 .filter(order -> order.getProducts()
                         .stream()
                         .anyMatch(product -> product.getCategory().equals("Baby")))
-                        .toList();
+                .toList();
 
         System.out.println("Esercizio 2: ");
         babies.forEach(System.out::println);
 
+        List<Product> boysOrder = products.stream()
+                .filter(product -> product.getCategory().equals("Boys"))
+                .map(product -> {
+                    product.setPrice(product.getPrice() * 0.9);
+                    return product;
+                })
+                .toList();
+
+        System.out.println("Esercizio 3: ");
+        boysOrder.forEach(System.out::println);
+
+        List<Product> 
 
 
 
