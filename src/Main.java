@@ -57,8 +57,7 @@ public class Main {
         List<Order> orders = new ArrayList<>(List.of(o1, o2, o3));
 
         List<Product> expensiveBook = products.stream()
-                .filter(product -> product.getCategory().equals("Books"))
-                .filter(product -> product.getPrice() > 100)
+                .filter(product -> product.getCategory().equals("Books") && product.getPrice() > 100)
                 .toList();
 
         System.out.println("Esercizio 1:");
@@ -85,9 +84,10 @@ public class Main {
         boysOrder.forEach(System.out::println);
 
         List<List<Product>> tier2Order = orders.stream()
-                .filter(order -> order.getCustomer().getTier() == 2)
-                .filter(order -> order.getOrderDate().isAfter(LocalDate.of(2021,2,1)) &&
-                        order.getOrderDate().isBefore(LocalDate.of(2021, 4, 1)))
+                .filter(order -> order.getCustomer().getTier() == 2 &&
+                                order.getOrderDate().isAfter(LocalDate.of(2021,2,1)) &&
+                                order.getOrderDate().isBefore(LocalDate.of(2021, 4, 1))
+                        )
                 .map(order -> order.getProducts())
                 .toList();
 
